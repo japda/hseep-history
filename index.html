@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSEEP 演習制度學習指南</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #1a1814;
+    --ink-2:     #3d3a35;
+    --ink-3:     #6b6760;
+    --paper:     #faf8f4;
+    --paper-2:   #f0ede6;
+    --paper-3:   #e8e4db;
+    --rule:      #d6d2c8;
+    --accent:    #2a5f8f;
+    --accent-lt: #e8f0f8;
+    --teal:      #1a7a62;
+    --teal-lt:   #e4f3ef;
+    --amber:     #8a5c1a;
+    --amber-lt:  #fdf3e3;
+    --coral:     #8a2e2e;
+    --coral-lt:  #faeaea;
+    --purple:    #4a3a7a;
+    --purple-lt: #eeeaf8;
+    --green:     #2d6a2d;
+    --green-lt:  #e8f3e8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    color: #e8e4db;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 2rem;
+    height: 52px;
+    border-bottom: 2px solid var(--accent);
+  }
+  nav .brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    letter-spacing: .03em;
+    color: #faf8f4;
+    margin-right: auto;
+    white-space: nowrap;
+  }
+  nav a {
+    color: #b0ada6;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 0 14px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #333;
+    transition: color .2s, background .2s;
+    white-space: nowrap;
+  }
+  nav a:first-of-type { border-left: 1px solid #333; }
+  nav a:hover { color: #faf8f4; background: rgba(255,255,255,.06); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 2rem 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.03) 39px,
+      rgba(255,255,255,.03) 40px
+    );
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #8abadc;
+    border: 1px solid #2a5f8f;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -.01em;
+  }
+  .hero h1 span { color: #8abadc; }
+  .hero p {
+    max-width: 560px;
+    margin: 0 auto 32px;
+    color: #9c9890;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .hero-tags span {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.12);
+    color: #c8c4bc;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--rule); }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  p { margin-bottom: 14px; color: var(--ink-2); }
+  strong { color: var(--ink); font-weight: 500; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--rule);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 48px;
+    animation: fadeUp .5s ease both;
+  }
+  .tl-item:nth-child(1) { animation-delay: .05s; }
+  .tl-item:nth-child(2) { animation-delay: .1s; }
+  .tl-item:nth-child(3) { animation-delay: .15s; }
+  .tl-item:nth-child(4) { animation-delay: .2s; }
+  .tl-item:nth-child(5) { animation-delay: .25s; }
+  .tl-item:nth-child(6) { animation-delay: .3s; }
+  .tl-item:nth-child(7) { animation-delay: .35s; }
+
+  .tl-dot {
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 2px solid var(--rule);
+  }
+  .tl-dot.era-civil   { border-color: var(--ink-3); background: var(--ink-3); }
+  .tl-dot.era-fema    { border-color: var(--accent); background: var(--accent); }
+  .tl-dot.era-911     { border-color: var(--coral); background: var(--coral); }
+  .tl-dot.era-birth   { border-color: var(--teal); background: var(--teal); }
+  .tl-dot.era-katrina { border-color: #b85c1a; background: #b85c1a; }
+  .tl-dot.era-ppd8    { border-color: var(--purple); background: var(--purple); }
+  .tl-dot.era-current { border-color: var(--green); background: var(--green); width: 18px; height: 18px; left: -30px; top: 4px; }
+
+  .tl-era {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+  }
+  .era-civil   { background: #e8e6e2; color: var(--ink-3); }
+  .era-fema    { background: var(--accent-lt); color: var(--accent); }
+  .era-911     { background: var(--coral-lt); color: var(--coral); }
+  .era-birth   { background: var(--teal-lt); color: var(--teal); }
+  .era-katrina { background: var(--amber-lt); color: var(--amber); }
+  .era-ppd8    { background: var(--purple-lt); color: var(--purple); }
+  .era-current { background: var(--green-lt); color: var(--green); }
+
+  .tl-year {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .tl-card {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-top: 10px;
+  }
+  .tl-card p { margin-bottom: 8px; font-size: 14px; }
+  .tl-card p:last-child { margin-bottom: 0; }
+  .tl-card .highlight {
+    background: var(--paper);
+    border-left: 3px solid var(--accent);
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--ink-2);
+    border-radius: 0 4px 4px 0;
+  }
+  .tl-card .highlight.teal  { border-color: var(--teal); }
+  .tl-card .highlight.coral { border-color: var(--coral); }
+  .tl-card .highlight.purple { border-color: var(--purple); }
+  .tl-card .highlight.amber { border-color: var(--amber); }
+  .tl-card .highlight.green { border-color: var(--green); }
+
+  /* version badge */
+  .version-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .v-badge {
+    font-size: 12px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 4px 12px;
+    background: var(--paper);
+    color: var(--ink-2);
+  }
+  .v-badge.current {
+    background: var(--green-lt);
+    border-color: var(--green);
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  /* ── HSPD BOX ── */
+  .directive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .directive-card {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--paper-2);
+  }
+  .directive-card .d-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .directive-card h4 { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .directive-card p { font-size: 13px; color: var(--ink-3); margin: 0; }
+
+  /* ── SMART SECTION ── */
+  .smart-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 28px 0;
+  }
+  @media (max-width: 700px) {
+    .smart-grid { grid-template-columns: 1fr 1fr; }
+    nav a { display: none; }
+    nav a:nth-child(-n+3) { display: flex; }
+  }
+  .smart-card {
+    border-radius: 8px;
+    padding: 20px 14px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .smart-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .smart-s { background: var(--accent-lt); }
+  .smart-s::before { background: var(--accent); }
+  .smart-m { background: var(--teal-lt); }
+  .smart-m::before { background: var(--teal); }
+  .smart-a { background: var(--purple-lt); }
+  .smart-a::before { background: var(--purple); }
+  .smart-r { background: var(--amber-lt); }
+  .smart-r::before { background: #ba7517; }
+  .smart-t { background: var(--coral-lt); }
+  .smart-t::before { background: var(--coral); }
+
+  .smart-letter {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .smart-s .smart-letter { color: var(--accent); }
+  .smart-m .smart-letter { color: var(--teal); }
+  .smart-a .smart-letter { color: var(--purple); }
+  .smart-r .smart-letter { color: var(--amber); }
+  .smart-t .smart-letter { color: var(--coral); }
+
+  .smart-en { font-size: 12px; font-weight: 500; margin-bottom: 4px; color: var(--ink-2); }
+  .smart-zh { font-size: 13px; font-weight: 500; margin-bottom: 10px; color: var(--ink); }
+  .smart-desc { font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+
+  /* Objective comparison */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+  .bad-box {
+    background: var(--coral-lt);
+    border: 1px solid #e0b8b8;
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .good-box {
+    background: var(--teal-lt);
+    border: 1px solid #a8d8cc;
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .box-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .bad-box .box-label { color: var(--coral); }
+  .good-box .box-label { color: var(--teal); }
+  .obj-text {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  .obj-note { font-size: 12px; color: var(--ink-3); }
+
+  /* SMART formula */
+  .formula-box {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .formula-box .f-title { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #8abadc; margin-bottom: 8px; }
+  .formula-box .f-formula { color: #e8e4db; }
+  .formula-box span { color: #8abadc; }
+
+  /* ── CAPABILITY SECTION ── */
+  .tcs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  @media (max-width: 600px) { .tcs-grid { grid-template-columns: 1fr; } }
+  .tcs-card {
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid var(--rule);
+  }
+  .tcs-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    margin-bottom: 4px;
+  }
+  .tcs-task { background: var(--accent-lt); border-color: #b8d0e8; }
+  .tcs-task .tcs-num { color: var(--accent); }
+  .tcs-cond { background: var(--purple-lt); border-color: #c8c0e8; }
+  .tcs-cond .tcs-num { color: var(--purple); }
+  .tcs-std { background: var(--teal-lt); border-color: #a8d8cc; }
+  .tcs-std .tcs-num { color: var(--teal); }
+  .tcs-label { font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
+  .tcs-en { font-size: 11px; color: var(--ink-3); margin-bottom: 10px; }
+  .tcs-ex { font-size: 13px; color: var(--ink-2); }
+
+  /* EEG Rating */
+  .eeg-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  @media (max-width: 640px) { .eeg-grid { grid-template-columns: 1fr 1fr; } }
+  .eeg-card {
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid var(--rule);
+  }
+  .eeg-grade {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .eeg-p { background: var(--teal-lt); border-color: #a8d8cc; }
+  .eeg-p .eeg-grade { color: var(--teal); }
+  .eeg-s { background: var(--accent-lt); border-color: #b8d0e8; }
+  .eeg-s .eeg-grade { color: var(--accent); }
+  .eeg-m { background: var(--amber-lt); border-color: #e8d0a0; }
+  .eeg-m .eeg-grade { color: var(--amber); }
+  .eeg-u { background: var(--coral-lt); border-color: #e0b8b8; }
+  .eeg-u .eeg-grade { color: var(--coral); }
+  .eeg-name { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .eeg-note { font-size: 11px; color: var(--ink-3); line-height: 1.5; }
+
+  /* ── KEELUNG EXAMPLE ── */
+  .example-box {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 20px 0;
+  }
+  .example-box .ex-label {
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .example-box .ex-obj {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--ink);
+    border-left: 3px solid var(--teal);
+    padding-left: 16px;
+    margin-bottom: 16px;
+  }
+  .ex-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ex-tag {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .tag-s { background: var(--accent-lt); border-color: #b8d0e8; color: var(--accent); }
+  .tag-m { background: var(--teal-lt); border-color: #a8d8cc; color: var(--teal); }
+  .tag-a { background: var(--purple-lt); border-color: #c8c0e8; color: var(--purple); }
+  .tag-r { background: var(--amber-lt); border-color: #e8d0a0; color: var(--amber); }
+  .tag-t { background: var(--coral-lt); border-color: #e0b8b8; color: var(--coral); }
+
+  /* ── CYCLE SECTION ── */
+  .cycle-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    margin: 28px 0;
+    position: relative;
+  }
+  @media (max-width: 640px) { .cycle-steps { grid-template-columns: 1fr; } }
+  .cycle-step {
+    text-align: center;
+    padding: 20px 10px;
+    position: relative;
+  }
+  .cycle-step::after {
+    content: '→';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--rule);
+    font-size: 18px;
+  }
+  .cycle-step:last-child::after { display: none; }
+  @media (max-width: 640px) {
+    .cycle-step::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -12px; transform: translateX(-50%); }
+    .cycle-step:last-child::after { display: none; }
+    .cycle-step { padding: 16px 10px 24px; }
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .step-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; color: var(--ink); }
+  .step-sub { font-size: 11px; color: var(--ink-3); line-height: 1.5; }
+
+  /* ── EXERCISE TYPES ── */
+  .type-section { margin: 20px 0; }
+  .type-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .type-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: .05em;
+  }
+  .badge-disc { background: var(--teal-lt); color: var(--teal); border: 1px solid #a8d8cc; }
+  .badge-ops  { background: var(--purple-lt); color: var(--purple); border: 1px solid #c8c0e8; }
+  .type-rule { flex: 1; height: 1px; background: var(--rule); }
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 640px) { .type-grid { grid-template-columns: 1fr 1fr; } }
+  .type-card {
+    border-radius: 6px;
+    padding: 14px;
+    border: 1px solid var(--rule);
+    background: var(--paper-2);
+  }
+  .type-card .t-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .type-card .t-en   { font-size: 11px; color: var(--ink-3); margin-bottom: 8px; }
+  .type-card .t-desc { font-size: 12px; color: var(--ink-2); line-height: 1.6; }
+  .disc .t-name { color: var(--teal); }
+  .ops  .t-name { color: var(--purple); }
+
+  /* complexity arrow */
+  .complexity-bar {
+    position: relative;
+    background: linear-gradient(to right, var(--teal-lt), var(--purple-lt));
+    border-radius: 4px;
+    height: 8px;
+    margin: 16px 0 8px;
+  }
+  .complexity-bar::before {
+    content: '複雜度與資源需求';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-size: 11px;
+    color: var(--ink-3);
+  }
+  .complexity-bar::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: -4px;
+    color: var(--ink-3);
+    font-size: 14px;
+  }
+
+  /* ── SUMMARY TABLE ── */
+  .sum-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .sum-table th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: .05em;
+  }
+  .sum-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-2);
+    vertical-align: top;
+  }
+  .sum-table tr:nth-child(even) td { background: var(--paper-2); }
+  .sum-table td:first-child { font-weight: 500; color: var(--ink); white-space: nowrap; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: #6b6760;
+    text-align: center;
+    padding: 32px 2rem;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+  footer a { color: #8abadc; text-decoration: none; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp .5s ease both; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    display: flex;
+    gap: 14px;
+    background: var(--accent-lt);
+    border: 1px solid #b8d0e8;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    align-items: flex-start;
+  }
+  .callout .icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .callout p { margin: 0; font-size: 13px; color: var(--ink-2); line-height: 1.7; }
+  .callout.amber { background: var(--amber-lt); border-color: #e8d0a0; }
+  .callout.teal  { background: var(--teal-lt);  border-color: #a8d8cc; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">HSEEP 學習指南</div>
+  <a href="#history">歷史淵源</a>
+  <a href="#directives">政策基礎</a>
+  <a href="#smart">SMART 目標</a>
+  <a href="#capability">能力導向評估</a>
+  <a href="#cycle">演習週期</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Homeland Security Exercise and Evaluation Program</div>
+  <h1>HSEEP<br><span>演習制度學習指南</span></h1>
+  <p>從冷戰民防時代到 2020 年現行版本，完整梳理歷史脈絡、政策基礎、SMART 目標撰寫，與能力導向評估方法。</p>
+  <div class="hero-tags">
+    <span>歷史淵源 1930s–2020</span>
+    <span>SMART 演習目標</span>
+    <span>能力導向評估</span>
+    <span>EEG 四等級</span>
+    <span>基隆市政府應用</span>
+  </div>
+</div>
+
+<!-- HISTORY -->
+<section id="history">
+  <div class="container">
+    <div class="section-label">Part 1</div>
+    <h2>歷史淵源與演進脈絡</h2>
+    <p>HSEEP 並非憑空而生，而是每一次重大災難後，美國聯邦政府被迫累積教訓、逐步建立的制度結晶。理解這段歷史，有助於掌握 HSEEP 各項設計背後的真實邏輯。</p>
+
+    <div class="timeline">
+
+      <!-- 1 -->
+      <div class="tl-item">
+        <div class="tl-dot era-civil"></div>
+        <div class="tl-era era-civil">第一階段</div>
+        <div class="tl-year">1930s–1970s　冷戰民防時代</div>
+        <div class="tl-card">
+          <p>美軍自二戰起發展出系統性演練方法，包括桌上推演（tabletop exercise）、野外演練（field exercise）、演習後行動報告（AAR）等核心概念，這些都是 HSEEP 所有方法論的最早根源。</p>
+          <p>1950 年，Federal Civil Defense Administration（FCDA）成立，核攻擊防護演練制度化。1958 年，FEMA 前身 OCDM（Office of Civil and Defense Mobilization）建立全國民防演練框架，主要任務是核彈攻擊應對與疏散。</p>
+          <div class="highlight">
+            軍事演練文化：AAR、MSEL（主情境事件清單）等 HSEEP 核心工具，均源自這個時期的軍事訓練傳統。
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tl-item">
+        <div class="tl-dot era-fema"></div>
+        <div class="tl-era era-fema">第二階段</div>
+        <div class="tl-year">1979　FEMA 成立──整合分散的聯邦體系</div>
+        <div class="tl-card">
+          <p>卡特總統簽署 Executive Order 12127，將聯邦保險局、國家防火局、天氣局社區整備計畫、聯邦整備局等多個分散機構整合為 FEMA，確立「全危害（all-hazards）」演練方向。</p>
+          <p>James Lee Witt 就任局長後（1993–2001），推動 FEMA 從「核威脅備戰」轉向「自然災害全危害應變」的專業化改革，強化與州、地方政府的夥伴關係，並建立更系統化的演練評估機制。</p>
+          <div class="highlight">
+            FEMA 的誕生解決了「各自為政」的問題，但各州、各機關的演練方法仍不統一——這個問題要等到九一一後才被真正解決。
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tl-item">
+        <div class="tl-dot era-911"></div>
+        <div class="tl-era era-911">關鍵轉折</div>
+        <div class="tl-year">2001.09.11　九一一事件──HSEEP 誕生的直接催化劑</div>
+        <div class="tl-card">
+          <p>九一一攻擊暴露了美國備災制度最嚴重的缺口：各州、各機關演練方法完全不統一，跨機構協調在真實危機下嚴重失靈。</p>
+          <p>國會迅速通過 Homeland Security Act 2002，成立國土安全部（DHS），FEMA 被納入其中，演練制度從 FEMA 自行運作轉為全國統一規範的需求急速浮現。</p>
+          <div class="highlight coral">
+            DHS 的國內整備辦公室（DHS/ODP）隨後開發 HSEEP，要求各州、地方、部落政府採用統一的演練設計、執行與評估方法。
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="tl-item">
+        <div class="tl-dot era-birth"></div>
+        <div class="tl-era era-birth">HSEEP 誕生</div>
+        <div class="tl-year">2002–2004　政策三連發奠定法制基礎</div>
+        <div class="tl-card">
+          <p>三大總統令在短短一年內相繼頒布，構成 HSEEP 完整的政策授權架構：</p>
+          <div class="directive-grid">
+            <div class="directive-card">
+              <div class="d-num">HSPD-5</div>
+              <h4>國家事故管理系統（NIMS）</h4>
+              <p>建立跨機構統一指揮架構，確立聯邦、州、地方協調機制。</p>
+            </div>
+            <div class="directive-card">
+              <div class="d-num">HSPD-7</div>
+              <h4>關鍵基礎設施保護</h4>
+              <p>要求演練涵蓋電力、水利、交通等關鍵設施的應變能力。</p>
+            </div>
+            <div class="directive-card">
+              <div class="d-num">HSPD-8</div>
+              <h4>國家備災目標（2003.12.17）</h4>
+              <p>要求 DHS 建立「能力導向演練」方法，定期評估各地備災能力。</p>
+            </div>
+          </div>
+          <div class="highlight teal">
+            DHS/ODP 據此開發 HSEEP 第一版，三大支柱：演習設計（Design）、演習執行（Conduct）、演習評估（Evaluation）正式確立。
+          </div>
+          <div class="version-row">
+            <div class="v-badge">HSEEP 初版 (~2003)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="tl-item">
+        <div class="tl-dot era-katrina"></div>
+        <div class="tl-era era-katrina">再度升級</div>
+        <div class="tl-year">2005–2007　卡崔娜颶風──制度二度被迫改革</div>
+        <div class="tl-card">
+          <p>卡崔娜颶風（2005）造成超過 1,800 人死亡，聯邦政府應變嚴重失當，FEMA 被廣泛批評。事後調查發現，跨層級協調機制缺失、演練規範不足是主要原因之一。</p>
+          <p>國會通過 Post-Katrina Emergency Management Reform Act 2006（PKEMRA），要求：重建演練標準、FEMA 至少每兩年進行一次全國性演練、建立系統化的改善計畫（Improvement Plan）追蹤機制。</p>
+          <div class="highlight amber">
+            HSEEP 2007 版正式發布（多冊架構），新增改善計畫（IP）與矯正行動（Corrective Actions）追蹤閉環機制。
+          </div>
+          <div class="version-row">
+            <div class="v-badge">HSEEP 2007 版（多冊）</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="tl-item">
+        <div class="tl-dot era-ppd8"></div>
+        <div class="tl-era era-ppd8">典範轉移</div>
+        <div class="tl-year">2011–2013　PPD-8──從反恐轉向全危害全社區</div>
+        <div class="tl-card">
+          <p>歐巴馬總統於 2011 年 3 月 30 日頒布 Presidential Policy Directive 8（PPD-8），取代 HSPD-8，正式確立「全危害（All-Hazards）、全社區（Whole Community）」的備災框架。</p>
+          <p>PPD-8 強調備災涵蓋五大任務領域：<strong>預防（Prevention）、保護（Protection）、減災（Mitigation）、應變（Response）、復原（Recovery）</strong>，並建立國家備災目標（NPG）與國家備災系統（NPS）。</p>
+          <div class="highlight purple">
+            HSEEP 2013 版取代 2007 年多冊版，整合為單一文件，全面對齊 PPD-8 框架，納入「能力目標」與「全社區方法」。
+          </div>
+          <div class="version-row">
+            <div class="v-badge">HSEEP 2013 版（整合單冊）</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="tl-item">
+        <div class="tl-dot era-current"></div>
+        <div class="tl-era era-current">現行版本</div>
+        <div class="tl-year">2020　HSEEP 2020 版──當前規範</div>
+        <div class="tl-card">
+          <p>HSEEP 2020 版在 2013 版基礎上進一步精進，主要更新包括：以「整合整備規劃工作坊（IPPW）」取代舊有的 TEPW，更強調演練計畫與整體備災工作的整合；強化「整合整備週期（Integrated Preparedness Cycle）」的概念，使演練成為備災系統的有機組成。</p>
+          <div class="highlight green">
+            核心架構：計畫管理 → 設計與發展 → 演習執行 → 評估 → 改善計畫，構成完整的 HSEEP 演習週期（Cycle）。
+          </div>
+          <div class="version-row">
+            <div class="v-badge current">HSEEP 2020 版（現行）</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+
+    <!-- Summary table -->
+    <h3 style="margin-top: 40px; margin-bottom: 16px;">版本演進速覽</h3>
+    <table class="sum-table">
+      <thead>
+        <tr>
+          <th>版本</th>
+          <th>年份</th>
+          <th>直接驅動事件</th>
+          <th>主要新增機制</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>初版</td>
+          <td>~2003–2004</td>
+          <td>九一一事件、HSPD-8</td>
+          <td>建立設計、執行、評估三大支柱</td>
+        </tr>
+        <tr>
+          <td>2007 版（多冊）</td>
+          <td>2007</td>
+          <td>卡崔娜颶風、PKEMRA</td>
+          <td>改善計畫（IP）、矯正行動追蹤</td>
+        </tr>
+        <tr>
+          <td>2013 版</td>
+          <td>2013</td>
+          <td>PPD-8、全社區方法</td>
+          <td>整合為單冊、五大任務領域</td>
+        </tr>
+        <tr>
+          <td><strong>2020 版（現行）</strong></td>
+          <td>2020</td>
+          <td>整備系統整合需求</td>
+          <td>IPPW 取代 TEPW、整合整備週期</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DIRECTIVES -->
+<section id="directives">
+  <div class="container">
+    <div class="section-label">Part 2</div>
+    <h2>HSEEP 的政策法制基礎</h2>
+    <p>理解 HSEEP 為什麼能「強制」各州、地方政府採用，關鍵在於它背後的政策授權層級。以下是從法律到演練規範的完整授權鏈：</p>
+
+    <div class="callout">
+      <div class="icon">&#9432;</div>
+      <p><strong>授權邏輯：</strong>Stafford Act（聯邦法）→ Homeland Security Act 2002（部門設立）→ HSPD-8 / PPD-8（總統令）→ HSEEP（規範文件）。凡接受聯邦補助款（Grant）的州、地方演練計畫，均須遵循 HSEEP 方法論。</p>
+    </div>
+
+    <table class="sum-table">
+      <thead>
+        <tr>
+          <th>法律 / 指令</th>
+          <th>年份</th>
+          <th>對 HSEEP 的意義</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Robert T. Stafford Act</td>
+          <td>1988</td>
+          <td>聯邦災難援助的根本法，確立聯邦、州、地方的角色分工基礎</td>
+        </tr>
+        <tr>
+          <td>Homeland Security Act</td>
+          <td>2002</td>
+          <td>成立 DHS，FEMA 納入其中，賦予 DHS 統一演練規範的職責</td>
+        </tr>
+        <tr>
+          <td>HSPD-5</td>
+          <td>2003</td>
+          <td>建立 NIMS，確立演練中跨機構統一指揮的標準架構</td>
+        </tr>
+        <tr>
+          <td>HSPD-8</td>
+          <td>2003</td>
+          <td>要求建立全國備災目標，能力導向演練的政策基礎</td>
+        </tr>
+        <tr>
+          <td>PKEMRA 2006</td>
+          <td>2006</td>
+          <td>要求至少兩年一次全國演練，强制建立改善計畫機制</td>
+        </tr>
+        <tr>
+          <td>PPD-8</td>
+          <td>2011</td>
+          <td>取代 HSPD-8，確立全危害、全社區框架，定義五大任務領域</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SMART -->
+<section id="smart">
+  <div class="container">
+    <div class="section-label">Part 3</div>
+    <h2>SMART 演習目標</h2>
+    <p>HSEEP 最核心的品質要求之一，就是演習目標必須是 SMART 的。沒有清晰的目標，評估就失去依據；沒有可量測的標準，改善計畫就無從起步。</p>
+
+    <div class="callout amber">
+      <div class="icon">&#9888;</div>
+      <p><strong>為什麼非得 SMART 不可？</strong>傳統演練目標常寫「各單位應熟悉應變程序」，這類目標演習結束後無法判斷有沒有達成——評估員不知道要觀察什麼，AAR 也無從填寫。SMART 要求你把模糊期望改寫成「可以被裁判」的句子。</p>
+    </div>
+
+    <div class="smart-grid">
+      <div class="smart-card smart-s">
+        <div class="smart-letter">S</div>
+        <div class="smart-en">Specific</div>
+        <div class="smart-zh">具體明確</div>
+        <div class="smart-desc">指定誰（哪個單位/職位）負責做什麼行動，針對什麼情境，不能模糊帶過</div>
+      </div>
+      <div class="smart-card smart-m">
+        <div class="smart-letter">M</div>
+        <div class="smart-en">Measurable</div>
+        <div class="smart-zh">可量測</div>
+        <div class="smart-desc">有明確數字、時限或通過/未通過標準，讓評估員可以在現場做出判定</div>
+      </div>
+      <div class="smart-card smart-a">
+        <div class="smart-letter">A</div>
+        <div class="smart-en">Achievable</div>
+        <div class="smart-zh">可達成</div>
+        <div class="smart-desc">符合演習規模與現有資源，在模擬情境下實際可以完成，不過度理想化</div>
+      </div>
+      <div class="smart-card smart-r">
+        <div class="smart-letter">R</div>
+        <div class="smart-en">Relevant</div>
+        <div class="smart-zh">相關連結</div>
+        <div class="smart-desc">連結備災優先事項與核心能力指標（Core Capability），有意義而非形式演練</div>
+      </div>
+      <div class="smart-card smart-t">
+        <div class="smart-letter">T</div>
+        <div class="smart-en">Time-bound</div>
+        <div class="smart-zh">有時限</div>
+        <div class="smart-desc">演習期間內可完成，有具體期程或時間門檻（如「30 分鐘內」）</div>
+      </div>
+    </div>
+
+    <!-- Formula -->
+    <div class="formula-box">
+      <div class="f-title">SMART 目標句型公式</div>
+      <div class="f-formula">
+        「<span>[誰]</span> 在 <span>[什麼情境/條件下]</span>，<br>
+        於 <span>[多少時間內]</span>，<br>
+        <span>[做什麼具體行動]</span>，<br>
+        達到 <span>[什麼程度/標準]</span>。」
+      </div>
+    </div>
+
+    <!-- Compare -->
+    <h3>目標寫法對比</h3>
+    <div class="compare-grid">
+      <div class="bad-box">
+        <div class="box-label">&#10007; 不符合 SMART</div>
+        <div class="obj-text">「各單位應熟悉緊急應變程序，並在災害發生時妥善應對。」</div>
+        <div class="obj-note">
+          問題：無具體主體（「各單位」太模糊）、無量測標準（「妥善應對」如何定義？）、無時限、無可評估的動作。演習結束後，評估員不知道要打 P 還是 U。
+        </div>
+      </div>
+      <div class="good-box">
+        <div class="box-label">&#10003; 符合 SMART</div>
+        <div class="obj-text">「防災中心值班科長，於模擬坡地災情通報注入後 30 分鐘內，依 EOC 標準程序完成第一次情況報告（SitRep #1）並回報市長室。」</div>
+        <div class="obj-note">
+          優點：明確主體（值班科長）、具體行動（完成 SitRep #1）、時限（30 分鐘）、量測標準（有無完成並回報）。評估員坐在現場就能判定通過與否。
+        </div>
+      </div>
+    </div>
+
+    <!-- Keelung example -->
+    <h3 style="margin-top: 32px;">基隆市政府應用範例</h3>
+    <div class="example-box">
+      <div class="ex-label">符合 SMART 的演習目標（BCP 桌上演練）</div>
+      <div class="ex-obj">
+        「基隆市政府業務持續計畫（BCP）執行小組召集人，於桌上演練中接獲模擬坡地崩塌災情通報注入後，應在 <strong>45 分鐘內</strong>完成：
+        <br>（一）依 BCP 業務中斷等級判斷程序，確認本次中斷等級並通報主管；
+        <br>（二）依預定替代工作地點計畫，啟動人員調度通知。」
+      </div>
+      <div class="ex-tags">
+        <span class="ex-tag tag-s">S：BCP 執行小組召集人</span>
+        <span class="ex-tag tag-m">M：45 分鐘完成兩項任務</span>
+        <span class="ex-tag tag-a">A：桌上演練範圍可達成</span>
+        <span class="ex-tag tag-r">R：連結應急管理核心能力</span>
+        <span class="ex-tag tag-t">T：演練情境注入後計時</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITY -->
+<section id="capability">
+  <div class="container">
+    <div class="section-label">Part 4</div>
+    <h2>能力導向評估</h2>
+    <p>這是 HSEEP 與一般行政演練最大的本質差異。傳統演練問的是「有沒有照程序走」；HSEEP 問的是：<strong>「這個組織，在這個條件下，有沒有展現出所需的能力？」</strong></p>
+
+    <div class="callout teal">
+      <div class="icon">&#9654;</div>
+      <p><strong>關鍵認知：</strong>能力（Capability）不是單一技能，而是「讓某個結果得以發生的所有要素的整合」，包括人員、程序、設備、訓練、組織結構。演習是在受控環境下驗證這些要素有沒有真正整合運作。</p>
+    </div>
+
+    <h3 style="margin-bottom: 16px;">Task–Condition–Standard 三要素</h3>
+    <div class="tcs-grid">
+      <div class="tcs-card tcs-task">
+        <div class="tcs-num">T</div>
+        <div class="tcs-label">Task　任務</div>
+        <div class="tcs-en">What action is performed</div>
+        <div class="tcs-ex">演習中要執行的具體行動。<br>例：啟動防災應變中心（EOC）、完成業務中斷評估</div>
+      </div>
+      <div class="tcs-card tcs-cond">
+        <div class="tcs-num">C</div>
+        <div class="tcs-label">Condition　條件</div>
+        <div class="tcs-en">Under what circumstances</div>
+        <div class="tcs-ex">在什麼情境或限制下執行此任務。<br>例：地震後 2 小時、人力減少三分之一、主要系統中斷</div>
+      </div>
+      <div class="tcs-card tcs-std">
+        <div class="tcs-num">S</div>
+        <div class="tcs-label">Standard　標準</div>
+        <div class="tcs-en">How well it must be done</div>
+        <div class="tcs-ex">達到什麼程度才算通過。<br>例：60 分鐘內完成、通知率達 80%、無通報遺漏</div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 16px; margin-top: 40px;">演習評估指引（EEG）四等級</h3>
+    <p>評估員（Evaluator）在演習現場使用 EEG（Exercise Evaluation Guide）記錄觀察，針對每個演習目標評定等級。這不是主觀打分，而是基於事先設計的觀察問題與量測標準。</p>
+
+    <div class="eeg-grid">
+      <div class="eeg-card eeg-p">
+        <div class="eeg-grade">P</div>
+        <div class="eeg-name">Performed without Challenges</div>
+        <div class="eeg-note">表現良好，無重大缺失，能力已充分展現</div>
+      </div>
+      <div class="eeg-card eeg-s">
+        <div class="eeg-grade">S</div>
+        <div class="eeg-name">Performed with Some Challenges</div>
+        <div class="eeg-note">有些挑戰但仍達成，需小幅改善</div>
+      </div>
+      <div class="eeg-card eeg-m">
+        <div class="eeg-grade">M</div>
+        <div class="eeg-name">Performed with Major Challenges</div>
+        <div class="eeg-note">重大挑戰，嚴重影響執行效果</div>
+      </div>
+      <div class="eeg-card eeg-u">
+        <div class="eeg-grade">U</div>
+        <div class="eeg-name">Unable to be Performed</div>
+        <div class="eeg-note">無法完成，必須列入矯正行動（IP）</div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 24px;">
+      <div class="icon">&#128270;</div>
+      <p>M 和 U 的評定結果，會直接進入 <strong>After Action Report（AAR）</strong>的「需改善事項」，並轉為 <strong>改善計畫（Improvement Plan, IP）</strong>中的具體矯正行動（Corrective Actions），由指定人員、在指定期限內完成，形成閉環。這是 HSEEP 與一般演練最不同的地方——評估的目的不是打分，而是驅動改善。</p>
+    </div>
+
+    <!-- AAR/IP flow -->
+    <h3 style="margin-top: 32px; margin-bottom: 16px;">從演習評估到改善的閉環流程</h3>
+    <div class="cycle-steps" style="grid-template-columns: repeat(5,1fr);">
+      <div class="cycle-step">
+        <div class="step-num">1</div>
+        <div class="step-title">演習執行</div>
+        <div class="step-sub">依計畫進行演習，評估員現場觀察記錄</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">2</div>
+        <div class="step-title">熱洗（Hot Wash）</div>
+        <div class="step-sub">演習結束後立即召開，收集初步印象與觀察</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">3</div>
+        <div class="step-title">AAR 撰寫</div>
+        <div class="step-sub">分析能力表現，記錄優點與待改善事項</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">4</div>
+        <div class="step-title">改善計畫（IP）</div>
+        <div class="step-sub">將待改善事項轉為有負責人、有期限的矯正行動</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">5</div>
+        <div class="step-title">追蹤與驗證</div>
+        <div class="step-sub">定期追蹤矯正行動完成狀況，下次演習再驗證</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CYCLE -->
+<section id="cycle">
+  <div class="container">
+    <div class="section-label">Part 5</div>
+    <h2>HSEEP 演習週期與類型</h2>
+    <p>HSEEP 2020 版將演習活動整合進「整合整備週期（Integrated Preparedness Cycle）」，演習不再是孤立事件，而是持續備災工作的一環。</p>
+
+    <h3 style="margin-bottom: 16px;">演習週期五大階段</h3>
+    <div class="cycle-steps">
+      <div class="cycle-step">
+        <div class="step-num">1</div>
+        <div class="step-title">計畫管理</div>
+        <div class="step-sub">IPPW 整合整備規劃工作坊、多年整備計畫（IPP）</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">2</div>
+        <div class="step-title">設計與發展</div>
+        <div class="step-sub">C&amp;O、IPM、MPM、FPM 四次規劃會議、MSEL 設計</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">3</div>
+        <div class="step-title">演習執行</div>
+        <div class="step-sub">場地準備、演習進行、熱洗（Hot Wash）</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">4</div>
+        <div class="step-title">評估</div>
+        <div class="step-sub">EEG 資料分析、After Action Report 撰寫</div>
+      </div>
+      <div class="cycle-step">
+        <div class="step-num">5</div>
+        <div class="step-title">改善計畫</div>
+        <div class="step-sub">IP 矯正行動、追蹤系統、下次演習驗證</div>
+      </div>
+    </div>
+
+    <!-- Exercise types -->
+    <h3 style="margin-top: 40px; margin-bottom: 20px;">演習類型：從低複雜度到高複雜度</h3>
+
+    <div class="type-section">
+      <div class="type-header">
+        <span class="type-badge badge-disc">討論型演習 Discussion-Based</span>
+        <div class="type-rule"></div>
+      </div>
+      <div class="type-grid">
+        <div class="type-card disc">
+          <div class="t-name">研討會</div>
+          <div class="t-en">Seminar</div>
+          <div class="t-desc">介紹計畫、政策或程序，適合新成員導入或新計畫說明</div>
+        </div>
+        <div class="type-card disc">
+          <div class="t-name">工作坊</div>
+          <div class="t-en">Workshop</div>
+          <div class="t-desc">共同建立或修訂計畫文件，產出具體成果（如 BCP 草案）</div>
+        </div>
+        <div class="type-card disc">
+          <div class="t-name">桌上推演</div>
+          <div class="t-en">Tabletop Exercise</div>
+          <div class="t-desc">情境討論決策，最常用於 BCP 與 EOC 應變邏輯驗證</div>
+        </div>
+        <div class="type-card disc">
+          <div class="t-name">推演遊戲</div>
+          <div class="t-en">Game</div>
+          <div class="t-desc">規則導向模擬，探索決策對資源與後果的影響</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="complexity-bar"></div>
+    <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--ink-3); margin-bottom: 20px;">
+      <span>低（認知與計畫驗證）</span>
+      <span>高（實際操演與資源動員）</span>
+    </div>
+
+    <div class="type-section">
+      <div class="type-header">
+        <span class="type-badge badge-ops">操作型演習 Operations-Based</span>
+        <div class="type-rule"></div>
+      </div>
+      <div class="type-grid">
+        <div class="type-card ops">
+          <div class="t-name">單項演練</div>
+          <div class="t-en">Drill</div>
+          <div class="t-desc">針對單一技能或程序的實作測試，如緊急疏散演練</div>
+        </div>
+        <div class="type-card ops">
+          <div class="t-name">功能演習</div>
+          <div class="t-en">Functional Exercise</div>
+          <div class="t-desc">測試 EOC 指揮協調功能，不動員外部資源，聚焦決策與通訊</div>
+        </div>
+        <div class="type-card ops">
+          <div class="t-name">全規模演習</div>
+          <div class="t-en">Full-Scale Exercise</div>
+          <div class="t-desc">最高層級，動員真實人員與設備，模擬完整應變行動</div>
+        </div>
+        <div class="type-card ops">
+          <div class="t-name">操演</div>
+          <div class="t-en">Operations Drill</div>
+          <div class="t-desc">跨多個程序或單位的操作測試，介於 Drill 與全規模之間</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 32px;">
+      <div class="icon">&#9997;</div>
+      <p><strong>對基隆市政府的實務建議：</strong>依 HSEEP 漸進式規劃（Progressive Planning Approach），建議從「桌上推演（TTX）」起步，逐年累積 AAR 矯正行動，待計畫程序穩定後，再進行功能演習（FE）驗證 EOC 跨部門協調能力。每次演習的改善計畫（IP），都應對齊 BCP 與防災業務持續計畫的優先改善事項。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>HSEEP 演習制度學習指南　|　整理依據：FEMA HSEEP Doctrine 2020、HSPD-8、PPD-8</p>
+  <p style="margin-top: 6px;">資料來源：<a href="https://www.fema.gov/emergency-managers/national-preparedness/exercises/hseep" target="_blank">FEMA HSEEP 官方頁面</a>　|　<a href="https://www.fema.gov/sites/default/files/2020-04/Homeland-Security-Exercise-and-Evaluation-Program-Doctrine-2020-Revision-2-2-25.pdf" target="_blank">HSEEP 2020 原文文件</a></p>
+</footer>
+
+</body>
+</html>
